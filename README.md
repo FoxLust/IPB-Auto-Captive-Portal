@@ -1,5 +1,5 @@
 # IPB-Auto-Captive-Portal
-Login otomatis jaringan intenet Institut Pertanian Bogor (IPB) Captive Portal menggunakan POST Request
+Login otomatis jaringan internet Institut Pertanian Bogor (IPB) Captive Portal menggunakan POST Request
 
 Tidak ada GUI pada Server Linux tapi perlu melewati Captive Portal untuk terhubung Internet? Tidak masalah lagi~
 ![Captive Portal](ss/Cuplikan%20layar%202024-08-09%20110535.png)
