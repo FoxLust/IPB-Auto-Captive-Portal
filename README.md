@@ -1,10 +1,13 @@
 # IPB-Auto-Captive-Portal
 
-Tidak ada GUI pada Server Linux tapi perlu melewati Captive Portal untuk terhubung Internet? Tidak masalah lagi~
+Tidak ada GUI pada OS tapi perlu melewati Captive Portal untuk terhubung Internet? Tidak masalah lagi~
 
+
+## Update
+Ada file enkripsi.html yang di buat untuk menghasilkan Payload tanpa terhubung dengan Server Captive Portal IPB
 
 ## Penggunaan
-Terdapat 2 versi untuk menggunakannya Python & Bash, untuk mendapatkan Payload nya bisa melalui DevTool Console pada Chrome dengan cara Salin dan Tempel pada Console Script dibawah pada Browser
+Terdapat 3 versi untuk menggunakannya Python & Bash & PowerShell, untuk mendapatkan Payload nya bisa melalui DevTool Console pada Chrome dengan cara Salin dan Tempel pada Console Script dibawah pada Browser
 
 ```
 (function() {
