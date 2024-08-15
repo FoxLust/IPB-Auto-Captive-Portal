@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payload</title>
+</head>
+<body>
+    <h2>Buat Payload</h2>
+    <form onsubmit="event.preventDefault(); onPwdLogin();">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br><br>
+        
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        
+        <input type="checkbox" id="rememberPwd" name="rememberPwd">
+        <label for="rememberPwd">Remember Me</label><br><br>
+        
+        <button type="submit">Generated</button>
+    </form>
+    
+    <h3>Hasil Payload</h3>
+    <pre id="encryption_result"></pre>
+
+    <script>
+        function toHexString(byteArray) {
+            return Array.from(byteArray).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        function do_encrypt_rc4(data, key) {
+            function RC4(key, data) {
+                var S = [], j = 0, i, k, temp, result = [];
+                for (i = 0; i < 256; i++) S[i] = i;
+                for (i = 0; i < 256; i++) {
+                    j = (j + S[i] + key.charCodeAt(i % key.length)) % 256;
+                    temp = S[i];
+                    S[i] = S[j];
+                    S[j] = temp;
+                }
+                i = j = 0;
+                for (k = 0; k < data.length; k++) {
+                    i = (i + 1) % 256;
+                    j = (j + S[i]) % 256;
+                    temp = S[i];
+                    S[i] = S[j];
+                    S[j] = temp;
+                    result[k] = data.charCodeAt(k) ^ S[(S[i] + S[j]) % 256];
+                }
+                return result;
+            }
+            
+            var encrypted = RC4(key, data);
+            return toHexString(encrypted);
+        }
+
+        function $id(id) {
+            return document.getElementById(id);
+        }
+
+        function onPwdLogin() {
+            var username = $id("username").value;
+            var password = $id("password").value;
+            var rememberPwd = $id("rememberPwd").checked ? '1' : '0';
+            var rckey = +(new Date()) + '';
+            
+            var encryptedPwd = do_encrypt_rc4(password, rckey);
+            var payload = `opr=pwdLogin&userName=${encodeURIComponent(username)}&pwd=${encryptedPwd}&auth_tag=${rckey}&rememberPwd=${rememberPwd}`;
+
+            $id("encryption_result").textContent = 'Payload="' + payload + '"';
+        }
+    </script>
+</body>
+</html>
