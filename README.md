@@ -6,6 +6,13 @@ Tidak ada GUI pada OS tapi perlu melewati Captive Portal untuk terhubung Interne
 ## Update
 Ada file enkripsi.html yang di buat untuk menghasilkan Payload tanpa terhubung dengan Server Captive Portal IPB
 
+## MikroTik
+Script untuk Auto Login menggunakan MikroTik Scheduler
+
+```
+/tool fetch url="http://1.1.1.3/ac_portal/login.php" http-method=post http-data="opr=pwdLogin&userName=dzfgafsdhfgh&pwd=gdrr8ujbvcde54567654&auth_tag=3546576878trtt7ygf&rememberPwd=0" http-header-field="Content-Type: application/x-www-form-urlencoded"
+```
+
 ## Penggunaan
 Terdapat 3 versi untuk menggunakannya Python & Bash & PowerShell, untuk mendapatkan Payload nya bisa melalui DevTool Console pada Chrome dengan cara Salin dan Tempel pada Console Script dibawah pada Browser
 
